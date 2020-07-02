@@ -5,6 +5,7 @@ const questionElement = document.getElementById("level");
 const answerImages = document.getElementById("answer-images");
 const submitBtn = document.getElementById("submit-btn");
 const answer = document.getElementById("answer-value");
+const errorMessage = document.getElementById("errors");
 
 let shuffledQuestions, currentQuestionIndex;
 
@@ -45,10 +46,10 @@ function showQuestion(data) {
     img.classList.add("image");
     answerImages.appendChild(img);
   });
+
   submitBtn.addEventListener("click", () => {
     if (answer.value.toLowerCase() === data.answer.toLowerCase()) {
       setStatusClass(document.body, "correct");
-      alert("Bien Joué");
       if (shuffledQuestions.length > currentQuestionIndex + 1) {
         nextButton.classList.remove("hide");
       } else {
@@ -57,7 +58,11 @@ function showQuestion(data) {
       }
     } else {
       setStatusClass(document.body, "wrong");
-      alert("Mauvaise Réponse ! Essaie Encore");
+      //   alert("Mauvaise Réponse ! Essaie Encore");
+      errorMessage.classList.remove("hide");
+      setTimeout(() => {
+        errorMessage.classList.add("hide");
+      }, 2000);
     }
   });
 }
