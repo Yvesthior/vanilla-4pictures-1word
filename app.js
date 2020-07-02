@@ -47,8 +47,8 @@ function showQuestion(data) {
   });
   submitBtn.addEventListener("click", () => {
     if (answer.value.toLowerCase() === data.answer.toLowerCase()) {
-      alert("Bien Joué");
       setStatusClass(document.body, "correct");
+      alert("Bien Joué");
       if (shuffledQuestions.length > currentQuestionIndex + 1) {
         nextButton.classList.remove("hide");
       } else {
